@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Expr\Cast\String_;
 
 #[ORM\Entity(repositoryClass: EntrepriseRepository::class)]
 class Entreprise
@@ -135,5 +136,10 @@ class Entreprise
         }
 
         return $this;
+    }
+
+    public function __toString(): String
+    {
+        return $this->raisonSociale . " (" . $this->cp . " " . $this->ville . ")";
     }
 }
