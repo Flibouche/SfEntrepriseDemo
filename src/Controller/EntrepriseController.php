@@ -16,7 +16,9 @@ class EntrepriseController extends AbstractController
     public function index(EntrepriseRepository $entrepriseRepository): Response
     {
         // $entreprises = $entityManager->getRepository(Entreprise::class)->findAll();
-        $entreprises = $entrepriseRepository->findAll();
+        // $entreprises = $entrepriseRepository->findAll();
+        // SELECT * FROM entreprise WHERE ville = "Strasbourg" ORDER BY raisonSociale ASC
+        $entreprises = $entrepriseRepository->findBy(["ville" => "STRASBOURG"], ["raisonSociale" => "ASC"]);
         return $this->render('entreprise/index.html.twig', [
             'entreprises' => $entreprises
         ]);
