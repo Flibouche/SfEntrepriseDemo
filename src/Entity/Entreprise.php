@@ -108,6 +108,11 @@ class Entreprise
         return $this;
     }
 
+    public function getAdresseComplete(): ?string
+    {
+        return $this->adresse . " " . $this->cp . " " . $this->ville;
+    }
+
     /**
      * @return Collection<int, Employe>
      */
@@ -140,6 +145,6 @@ class Entreprise
 
     public function __toString(): String
     {
-        return $this->raisonSociale . " (" . $this->cp . " " . $this->ville . ")";
+        return $this->raisonSociale;
     }
 }
